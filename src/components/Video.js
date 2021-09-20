@@ -8,14 +8,15 @@ class Video {
 	renderCard = () => {
 		const { video_url } = this.data;
 		document.getElementById('video-container').innerHTML += `
-        <iframe src="https://www.tiktok.com/embed/${video_url}"  style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe>
+        <div class="video-card card">
+        <iframe src="https://www.tiktok.com/embed/${video_url}"   allowfullscreen scrolling="no" allow="encrypted-media;"></iframe>
 </div>
         `;
 	};
-	/*
+
 	static handleSubmit = (e) => {
 		e.preventDefault();
-		const newVideo = { video: e.target.video_url.value };
+		const newVideo = { video_url: e.target.video_url.value };
 		api.createVideo(newVideo).then((video) => {
 			new Video(video).renderCard();
 		});
@@ -37,7 +38,7 @@ class Video {
 			.addEventListener('submit', this.handleSubmit);
 		modal.open();
 	};
-*/
+
 	static renderVideoIndex = () => {
 		const main = document.getElementById('main');
 		main.innerHTML = '';
@@ -50,7 +51,6 @@ class Video {
 		addVideo.addEventListener('click', this.openVideoForm);
 		main.append(videoContainer, addVideo);
 		this.all.forEach((video) => video.renderCard());
-		videoContainer.addEventListener('click', this.handleIndexClick);
 	};
 	static getVideos = () => {
 		api.getVideos().then((videos) => {
