@@ -1,12 +1,3 @@
-const buttonDiv = () => document.getElementById('button-control');
-const buttonShow = () => document.getElementById('button-show');
-const buttonNew = () => document.getElementById('button-new');
-const ulDiv = () => document.getElementById('list');
-const ul = () => document.getElementById('categories-list');
-const videoForm = () => document.getElementById('video-form');
-const videoUrl = () => document.getElementById('video_url');
-const videoCategory = () => document.getElementById('category_id');
-
 document.addEventListener('DOMContentLoaded', () => {
 	buttonShow().addEventListener('click', handleClick);
 	buttonNew().addEventListener('click', displayForm);
@@ -14,10 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const handleClick = (e) => {
 	if (ul().children.length < 1) {
-		fetch('http://localhost:3000/categories')
-			.then((response) => response.json())
-			.then((json) => renderCategories(json))
-			.catch(handleError);
+		CategoryService.fetchCategories();
+		Category.render();
 	} else {
 		ul().innerHTML = '';
 	}
@@ -58,21 +47,21 @@ const fetchCategoriesForSelect = () => {
 					collection.join(' ')),
 		);
 };
-const renderCategories = (categories) => {
-	console.log('all categories');
-	ul().innerHTML += "<h1 id='categories-header'> Categories</h1>";
-	categories.forEach((element) => renderCategory(element));
-};
-const renderCategory = (category) => {
-	const h2 = document.createElement('h2');
-	const a = document.createElement('a');
-	a.id = `category-${category.id}`;
-	a.innerText = category.name;
-	a.href = '#';
-	a.addEventListener('click', (e) => renderVideos(e, category));
-	h2.appendChild(a);
-	ul().appendChild(h2);
-};
+// const renderCategories = (categories) => {
+// 	console.log('all categories');
+// 	ul().innerHTML += "<h1 id='categories-header'> Categories</h1>";
+// 	categories.forEach((element) => renderCategory(element));
+// };
+// const renderCategory = (category) => {
+// 	const h2 = document.createElement('h2');
+// 	const a = document.createElement('a');
+// 	a.id = `category-${category.id}`;
+// 	a.innerText = category.name;
+// 	a.href = '#';
+// 	a.addEventListener('click', (e) => renderVideos(e, category));
+// 	h2.appendChild(a);
+// 	ul().appendChild(h2);
+// };
 const renderVideos = (e, category) => {
 	const nextLiSibling = e.target.nextSibling;
 	if (nextLiSibling) {
