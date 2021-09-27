@@ -7,3 +7,4 @@ const ul = () => document.getElementById('categories-list');
 const videoForm = () => document.getElementById('video-form');
 const videoUrl = () => document.getElementById('video_url');
 const videoCategory = () => document.getElementById('category_id');
+const categoriesSection = () => document.querySelector('#categories-section');
