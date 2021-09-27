@@ -1,9 +1,17 @@
 class CategoryService {
+	static baseUrl = `${baseUrl}/categories`;
+
 	static fetchCategories() {
-		fetch('http://localhost:3000/categories')
+		fetch(this.baseUrl)
 			.then((resp) => resp.json())
-			.then((json) => json.forEach((catObj) => Category.findOrCreateBy(catObj)))
-			.catch(handleError);
+			.then((json) =>
+				json.forEach((catObj) => {
+					let cat = Category.findOrCreateBy(catObj);
+					cat.addToDropDown();
+					cat.render();
+				}),
+			)
+			.catch(this.handleError);
 	}
 
 	static handleError(error) {
