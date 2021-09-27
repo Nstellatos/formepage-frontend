@@ -13,13 +13,13 @@ class VideoService {
 	static handleError(err) {
 		alert(err);
 	}
-	static handleSubmit = (e) => {
+	static handleSubmit(e) {
 		e.preventDefault();
 		const data = {
 			video_url: videoUrl().value,
 			category_id: videoCategory().value,
 		};
-		fetch(this.baseUrl, {
+		fetch(VideoService.baseUrl, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -29,7 +29,25 @@ class VideoService {
 			.then((resp) => resp.json())
 			.then((json) => {
 				let vid = new Video(json);
+				videoForm().reset();
 				vid.render();
 			});
+	}
+	static handleDelete = (e) => {
+		fetch(`http://localhost:3000/videos/${e.target.dataset.id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((resp) => resp.json())
+			.then((json) => {
+				e.target.parentNode.remove();
+				let vid = Video.findById(parseInt(e.target.dataset.id));
+				let index = Video.all.indexOf(vid);
+				Video.all.splice(index, 1);
+				alert(json.message);
+			})
+			.catch(this.handleError);
 	};
 }
