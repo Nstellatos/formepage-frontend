@@ -14,22 +14,26 @@
 		<h2>ADD & SORT VIDEOS FROM YOUR TIKTOK FOR YOU PAGE</h2>
 		<div id="button-control">
 			<button id="button-show">Show Categories</button>
-			<button id="button-new">Add a video</button>
 		</div>
 
-		<div id="list">
-			<ul id="categories-list"></ul>
-		</div>
+		<div id="categories-section" class="section"></div>
+		<form id="video-form">
+			<h1> Add a Video </h1>
+			<label for="video_url">Paste your link here:</label><br>
+			<input type="text" name="video_url" id="video_url"><br>
+			<label for="video-category">Category:</label>
+                <select id="category_id">
+                </select>
+                <input type="submit" value="add video">
+            </form>
+        </div>
+
+
 		<script src="./src/global.js"></script>
 		<script src="./src/components/Category.js"></script>
 		<script src="./src/components/Video.js"></script>
 		<script src="./src/services/categoryService.js"></script>
 		<script src="./src/services/videoService.js"></script>
 		<script src="./src/index.js"></script>
-		<!-- <script src="./src/services/categoryService.js"></script>
-		<script src="./src/services/videoService.js"></script>
-
-		<script src="./src/components/Video.js"></script>
-		<script src="./src/components/Category.js"></script> -->
 	</body>
 </html>
