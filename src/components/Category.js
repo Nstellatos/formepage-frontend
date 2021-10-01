@@ -5,6 +5,7 @@ class Category {
 	constructor({ name, id, videos = [] }) {
 		this.name = name;
 		this.id = id;
+		this.videos = videos;
 		Category.all.push(this);
 	}
 
@@ -36,14 +37,17 @@ class Category {
 	}
 
 	render() {
-		const h4 = document.createElement('h4');
+		const categoryContainer = document.createElement('div');
+		categoryContainer.id = 'category-container';
+		categoryContainer.classList.add('card');
 		const a = document.createElement('a');
+
 		a.id = `category-${this.id}`;
 		a.innerText = this.name;
-		a.href = '#';
+		a.href = '####';
 		a.addEventListener('click', this.renderVideos);
-		h4.appendChild(a);
-		categoriesSection().appendChild(h4);
+		categoryContainer.appendChild(a);
+		categoriesSection().appendChild(categoryContainer);
 	}
 
 	renderVideos = (e) => {
@@ -56,7 +60,4 @@ class Category {
 			this.getVideos().forEach((element) => element.render());
 		}
 	};
-	renderVideos(cat) {
-		return cat;
-	}
 }
