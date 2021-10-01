@@ -6,12 +6,14 @@ class VideoService {
 			.then((json) =>
 				json.forEach((videoObj) => {
 					Video.findOrCreateBy(videoObj);
+					//vid.renderCard();
+					//Video.findOrCreateBy(videoObj);
 				}),
 			)
 			.catch(this.handleError);
 	}
 	static handleError(err) {
-		alert(err);
+		console.log(err);
 	}
 	static handleSubmit(e) {
 		e.preventDefault();
@@ -29,6 +31,7 @@ class VideoService {
 			.then((resp) => resp.json())
 			.then((json) => {
 				let vid = new Video(json);
+
 				videoForm().reset();
 				vid.render();
 			});
