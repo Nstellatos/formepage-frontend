@@ -6,6 +6,7 @@ class Video {
 		this.id = id;
 		Video.all.push(this);
 	}
+
 	static findByVideoUrl(video_url) {
 		return this.all.find(function (video) {
 			video.video_url === video_url;
@@ -29,6 +30,7 @@ class Video {
 
         
         `;
+
 		catSet.parentNode.appendChild(li);
 		document
 			.querySelector(`button.delete-video[data-id='${this.id}']`)
