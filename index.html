@@ -4,32 +4,77 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		<link rel="stylesheet" href="./assets/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/>
 
 		<title>ForMePage</title>
 	</head>
-	<body>
-		<h1>FOR ME PAGE</h1>
-		<h2>ADD & SORT VIDEOS FROM YOUR TIKTOK FOR YOU PAGE</h2>
-		<div id="button-control">
-			<button id="button-show">Show Categories</button>
+	<body id="top">
+		<div id="main">
+			<nav class="navbar">
+				<div class="navbar-list">
+					<a href="#new-form-section" id="new-category" class="navbar-link"
+						>ADD A CATEGORY</a
+					>
+
+					<a href="#new-form-section" id="new-video" class="navbar-link"
+						>ADD A VIDEO</a
+					>
+				</div>
+			</nav>
+
+			<div id="page-title">
+				<h1 class="center">
+					<span
+						class="txt-rotate"
+						data-period="2000"
+						data-rotate='["FOR ME PAGE."]'
+					>
+					</span>
+				</h1>
+			</div>
+
+			<section class="cards">
+				<div class="title">
+					<h1>Your Categories:</h1>
+				</div>
+				<div class="row">
+					<div class="cards-center">
+						<div id="categories-section"></div>
+					</div>
+				</div>
+			</section>
+
+			<div id="new-form-section" class="section">
+				<form id="video-form">
+					<h1>Add a Video</h1>
+					<label for="video_url">Paste your link here:</label><br />
+					<input type="text" name="video_url" id="video_url" /><br />
+					<label for="video-category">Category:</label>
+					<select id="category_id"></select>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div id="new-form-section" class="section">
+				<form id="category-form">
+					<h1>Add category</h1>
+					<label for="name">Category Name:</label><br />
+					<input type="text" name="name" id="name" /><br />
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div id="footer">
+				<a href="#top" id="scroll-back"
+					><i class="fas fa-2x fa-arrow-alt-circle-up"></i
+				></a>
+			</div>
 		</div>
 
-		<div id="categories-section" class="section"></div>
-		<form id="video-form">
-			<h1> Add a Video </h1>
-			<label for="video_url">Paste your link here:</label><br>
-			<input type="text" name="video_url" id="video_url"><br>
-			<label for="video-category">Category:</label>
-                <select id="category_id">
-                </select>
-                <input type="submit" value="add video">
-            </form>
-        </div>
-
-
 		<script src="./src/global.js"></script>
+		<script src="./src/hero.js"></script>
 		<script src="./src/components/Category.js"></script>
 		<script src="./src/components/Video.js"></script>
 		<script src="./src/services/categoryService.js"></script>
