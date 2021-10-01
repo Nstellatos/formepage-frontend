@@ -1,7 +1,7 @@
 # formepage
 link to backend: https://github.com/Nstellatos/formepage-backend
 
-For Me Page is an app built for lovers of TikTok! 
+# For Me Page is an app built for lovers of TikTok! 
 
 For Me Page is a SPA using vanilla javascript and rails api.
 
@@ -12,5 +12,11 @@ Now you no longer have to search through your likes on TikTok for that one cooki
 
 This app uses iframe. Not only will you be able to sort your videos by category but you can also play them!
 
+# Installation & Usage
+- fork and clone repo
+- cd into formepage
+- run bundle install
+- run rails server
+- run open index.html
 
 
